@@ -1,0 +1,23 @@
+# Secure HBase credentials, core-site.xml and hbase-site.xml are expected to be in the classpath
+# It's used for secure HBase only and ignored otherwise
+# principal: omid_hbase_client
+# keytab: /path/to/hbase/client/keytab
+
+omidClientConfiguration: !!org.apache.omid.tso.client.OmidClientConfiguration
+  connectionString: "cod--5y076zyh0obe-leader0.dex-priv.xcu2-8y8x.dev.cldr.work:54758"
+  tlsEnabled: true
+  enabledProtocols: "TLSv1.2"
+  trustStoreLocation: "/app/mount/conf/cm-auto-global_truststore.jks"
+  trustStorePassword: "bDWFftD927W0N0g61s0W2Ntp3W"
+  trustStoreType: "jks"
+
+metrics: !!org.apache.omid.metrics.CodahaleMetricsProvider [
+!!org.apache.omid.metrics.CodahaleMetricsConfig {
+  outputFreqInSecs: 15,
+  reporters: !!set {
+    !!org.apache.omid.metrics.CodahaleMetricsConfig$Reporter CSV
+  },
+  csvDir: "csvMetrics",
+  prefix: "somePrefix",
+}
+]
