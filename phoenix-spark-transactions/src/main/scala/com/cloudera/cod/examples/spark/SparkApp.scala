@@ -68,7 +68,7 @@ object SparkApp {
     df.write
       .format("phoenix")
       .options(Map("table" -> tableName, "zkUrl" -> zkUrl, "phoenixconfigs" -> extraOptions))
-      .mode(SaveMode.Overwrite)
+      .mode(SaveMode.Append)
       .save()
 
 
@@ -89,7 +89,7 @@ object SparkApp {
     df.write
       .format("phoenix")
       .options(Map("table" -> tableName, "zkUrl" -> zkUrl, "phoenixconfigs" -> extraOptions))
-      .mode(SaveMode.Overwrite)
+      .mode(SaveMode.Append)
       .save()
 
 
@@ -108,7 +108,7 @@ object SparkApp {
     df.write
       .format("phoenix")
       .options(Map("table" -> tableName, "zkUrl" -> zkUrl, "phoenixconfigs" -> extraOptions))
-      .mode(SaveMode.Overwrite)
+      .mode(SaveMode.Append)
       .save()
     try {
       conn.commit()
